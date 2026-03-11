@@ -1,0 +1,27 @@
+------------------------------------------------------------------------
+r1 | ebonhold | 2026-03-11 00:00:00 +0000 (Wed, 11 Mar 2026) | 1 line
+Changed paths:
+   M /trunk/Modules/OpenAll.lua
+   M /trunk/Modules/Select.lua
+
+Private server reliability fixes: add retry timeout to prevent OpenAll stalling on unresponsive server, fix AH faction detection to check English name as fallback, simplify AHPending delete logic to remove MAIL_INBOX_UPDATE deadlock.
+------------------------------------------------------------------------
+r2 | ebonhold | 2026-03-11 00:00:00 +0000 (Wed, 11 Mar 2026) | 4 lines
+Changed paths:
+   M /trunk/Modules/OpenAll.lua
+
+OpenAll: remove PendingDel mechanism. DeleteInboxItem no longer waits indefinitely for MAIL_INBOX_UPDATE (which may never fire on private servers). Now uses the standard OpenSpeed timer to advance after a delete.
+------------------------------------------------------------------------
+r3 | ebonhold | 2026-03-11 00:00:00 +0000 (Wed, 11 Mar 2026) | 4 lines
+Changed paths:
+   M /trunk/Modules/OpenAll.lua
+   M /trunk/Modules/Select.lua
+
+OpenAll, Select: add waitRetries counter. If the server does not respond to TakeInboxItem or TakeInboxMoney after 10 consecutive timer cycles (~5s at default speed), print a warning and force-advance to the next mail rather than stalling indefinitely.
+------------------------------------------------------------------------
+r4 | ebonhold | 2026-03-11 00:00:00 +0000 (Wed, 11 Mar 2026) | 1 line
+Changed paths:
+   M /trunk/Modules/OpenAll.lua
+
+OpenAll: faction AH detection now checks both localized and English faction name against sender, preventing mis-classification of AH mail on private servers with English NPC names.
+------------------------------------------------------------------------

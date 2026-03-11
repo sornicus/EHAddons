@@ -1,0 +1,7 @@
+# Ignore everything by default
+*
+
+# Explicitly track Ebonhold addons
+!.gitignore
+!Postal/
+!Postal/**
