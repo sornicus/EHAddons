@@ -5,3 +5,7 @@
 !.gitignore
 !Postal/
 !Postal/**
+!_NPCScan/
+!_NPCScan/**
+!_NPCScan.Overlay/
+!_NPCScan.Overlay/**
